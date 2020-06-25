@@ -10,11 +10,11 @@ pub struct Jar {
 }
 
 impl Jar {
-    pub fn open(jar_filename: String) -> Result<Self, &'static str> {
+    pub fn open(jar_filename: &String) -> Result<Self, &'static str> {
         Ok(Self{})
     }
 
-    pub fn file_contents_by_name(jar_member_filename: String) -> Vec<u8> {
+    pub fn file_contents_by_name(&mut self, jar_member_filename: String) -> Vec<u8> {
         vec![]
     }
 }
