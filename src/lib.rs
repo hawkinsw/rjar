@@ -14,7 +14,11 @@ impl Jar {
         Ok(Self{})
     }
 
-    pub fn file_contents_by_name(&mut self, jar_member_filename: String) -> Vec<u8> {
+    pub fn file_contents_by_name(&mut self, jar_member_filename: &String) -> Result<Vec<u8>, &'static str> {
+        Ok(vec![])
+    }
+
+    pub fn file_names(&self) -> Vec<String> {
         vec![]
     }
 }
