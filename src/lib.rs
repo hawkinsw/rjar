@@ -6,7 +6,7 @@ mod tests {
     }
 }
 
-struct Jar {
+pub struct Jar {
 }
 
 impl Jar {
