@@ -35,8 +35,8 @@ impl Jar {
         Err("Could not read contents of requested file.")
     }
 
-    pub fn file_names(&self) -> impl Iterator<Item = &str> {
-        self.archive.file_names()
+    pub fn file_names(&self) -> Vec<String> {
+        self.archive.file_names().map(|e| e.to_string()).collect()
     }
 }
 
@@ -64,9 +64,9 @@ mod tests {
     #[test]
     fn list_files_of_existing_jar() {
         if let Ok(jar) = super::Jar::open(&"testing.jar".to_string()) {
-            let filenames: Vec<&str> = jar.file_names().collect();
-            assert_eq!(filenames.contains(&"t/java/lang/Class.class"), true);
-            assert_eq!(filenames.contains(&"t/java/lang/Object.class"), true);
+            let filenames = jar.file_names();
+            assert_eq!(filenames.contains(&"t/java/lang/Class.class".to_string()), true);
+            assert_eq!(filenames.contains(&"t/java/lang/Object.class".to_string()), true);
             assert_eq!(
                 filenames.len(),
                 5,
